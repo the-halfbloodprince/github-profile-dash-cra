@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+# Github Profile Task - Preimage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Built with - Create React App
 
-## Available Scripts
+## Run:
+1. Install dependencies:
+    ```
+    npm install
+    ```
+    or
+    ```
+    yarn
+    ```
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Add a `Personal Access Token` from Github in the `.env` file
+    This step may be optional, but I came across a situation where I started recieving `403` error, which I suspected after searching on the web, maybe because of GitHub API rate-limitting unauthorized requests. Hence, it is recommended to complete this step.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start the server
+    ```
+    npm start
+    ```
+    or 
+    ```
+    yarn start
+    ```
 
-### `npm run build`
+## Usage:
+The input field may confuse people as it doesn't have a search button, but to search at the moment, you'll just ned to hit enter.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tasks Completed:
+[x] Using React 16+
+[x] Using Create React App - I was planning on using NextJS as it provided so much more to use easily but I sticked with Create React App as that's what the team prefers and hence would be able to evaluate the code better
+[x] `Material UI` used to create components. No other library used. At places where I found it relatively simpler or more custom, there I used `CSS Modules`.
+[x] All Required Info asked in the PS is displayed
+[x] README prepared.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## (Bonus Tasks)
+[x] Loading State
+[>] Error State is handled but the UI and errors not well prepared
+[x] Pagination
+[ ] Dark Theme / Light Theme Toggle - was in the plan to be implemented but I'm skipping it for now, will add later after a bit of refactoring.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Next Todos:
+[ ] The Code can be significantly cleaned up and refactored, which will be my next step.
+[ ] Error State handling better for different errors
+[ ] Error handling - Error Boundaries
+[ ] Improve UI
+[ ] Dark and Light Theme
