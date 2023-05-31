@@ -2,15 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import type { UserData, Repo, Lang } from '../models/GitHub'
 
-// const fetchData = async (url: string) => {
-//     try {
-//         const res = await axios.get(url)
-//         return res.data
-//     } catch (ex) {
-//         return ex
-//     }
-// }
-
 export const useFetchUserData = (username: string, page: number, per_page: number) => {
 
     const [userDataError, setUserDataError] = useState(null)
@@ -22,9 +13,6 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
 
     const githubBase = 'https://api.github.com'
     const userDataApiUrl = `${githubBase}/users/${username}`
-    // const userDataApiUrl = githubBase + '/users/' + username
-    // repos?page=1&per_page=10
-    // const userReposApiUrl = githubBase + '/users/' + username + '/repos?' + 'page=' + page + '&per_page=' + per_page
     const userReposApiUrl = `${githubBase}/users/${username}/repos?page=${page}&per_page=${per_page}`
 
     useEffect(() => {
@@ -105,8 +93,6 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
 
                 return finalRepos
 
-                // return new Promise((resolve, reject) => resolve(finalRepos))
-
             }).then(async (finalRepos: Repo[]) => {
                 
                 for (let i = 0; i < finalRepos.length; i++) {
@@ -139,42 +125,3 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
     }
 
 }
-
-// const useFetchRepoData = (username: string, options = {}) => {
-
-//     const [error, setError] = useState(null)
-//     const [data, setData] = useState<UserData>(null)
-//     const [loading, setLoading] = useState(false)
-
-//     const githubBase = 'https://api.github.com'
-//     // repos?page=1&per_page=10
-//     const apiUrl = githubBase + '/users/' + username + 'repos?page=1&per_page=10'
-
-//     useEffect(() => {
-
-//         setLoading(true)
-
-//         axios
-//             .get(apiUrl)
-//             .then(res => {
-                
-//                 // Set data
-//                 setData({
-//                     name: res.data.name,
-//                     username: res.data.login,
-//                     bio: res.data.bio,
-//                     avatarUrl: res.data.avatar_url,
-//                     followerCount: res.data.followers,
-//                     followingCount: res.data.following,
-//                     location: res.data.location,
-//                     publicRepositoryCount: res.data.public_repos,
-//                 })
-
-//                 setLoading(false)
-//             }).catch(err => {
-//                 setError(err)
-//             })
-
-//     }, [username])
-
-// }
