@@ -22,10 +22,16 @@ const User: FC<Props> = ({ userData: {
       <div className={styles.text}>
         <p className={styles.name}> { name } </p>
         <p className={styles.username}> { username } </p>
-        <p className={styles.bio}> { bio } </p>
+        <p className={styles.bio}> { bio || "No bio available" } </p>
         <p className={styles.location}>
-          <LocationIcon />
-          <p>{ location }</p>
+          { 
+            location && (
+              <>
+                <LocationIcon />
+                <p>{ location }</p>
+              </>
+            )
+          }
         </p>
         <div className={styles.numbers}>
           <p className={styles.followerCount}> Followers: <span> { followerCount } </span> </p>

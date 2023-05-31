@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import type { UserData, Repo } from '../models/GitHub'
+import type { UserData, Repo, Lang } from '../models/GitHub'
 
 // const fetchData = async (url: string) => {
 //     try {
@@ -41,7 +41,11 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
         console.log('loading')
         
         axios
-            .get(userDataApiUrl)
+            .get(userDataApiUrl, {
+                headers: {
+                    'Authorization': process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
+                }
+            })
             .then(res => {
                 
                 // Set data
@@ -57,6 +61,7 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
                 })
 
             }).catch(err => {
+                console.log(err)
                 setUserDataError(err)
             }).finally(() => {
                 setUserLoading(false)
@@ -64,17 +69,68 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
 
     }, [username])
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     setReposLoading(true)
+        setReposLoading(true)
+        if (username === '') {
+            return
+        }
 
-    //     axios
-    //         .get(userReposApiUrl)
-    //         .then(res => {
-    //             // set
-    //         })
+        axios
+            .get(userReposApiUrl, {
+                headers: {
+                    'Authorization': process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
+                }
+            })
+            .then(res => {
+                console.log(res.data)
+                const data = res.data as Repo[]
+                
+                const finalRepos: Repo[] = []
 
-    // }, [username, page, per_page])
+                data.map(repo => {
+                    const r: Repo = {
+                        name: repo.name,
+                        description: repo.description,
+                        forks_count: repo.forks_count,
+                        languages: [],
+                        languages_url: repo.languages_url,
+                        watchers_count: repo.watchers_count,
+                        html_url: repo.html_url
+                    }
+
+                    finalRepos.push(r)
+                })
+
+                return finalRepos
+
+                // return new Promise((resolve, reject) => resolve(finalRepos))
+
+            }).then(async (finalRepos: Repo[]) => {
+                
+                for (let i = 0; i < finalRepos.length; i++) {
+                    const url = finalRepos[i].languages_url as string
+                    const res = await axios.get(url)
+                    const langsObj = res.data
+                    const langs: Lang[] = []
+                    Object.keys(langsObj).forEach((key, idx) => {
+                        langs.push({
+                            name: key,
+                            value: langsObj[key]
+                        })
+                    })
+                    finalRepos[i].languages = langs
+                }
+
+                setRepos(finalRepos)
+
+            }).catch((ex) => {
+                setReposError(ex)
+            }).finally(() => {
+                setReposLoading(false)
+            })
+
+    }, [username, page, per_page])
 
     return {
         userData, userLoading, userDataError,

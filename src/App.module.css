@@ -33,3 +33,17 @@
         flex-direction: column;
     }
 }
+
+/* repos */
+
+.repos_table_header {
+    margin: 1rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.repos_table_header .repos_heading {
+    font-size: 2rem;
+}

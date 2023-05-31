@@ -15,7 +15,8 @@ a {
 
 /* variables */
 :root {
-  --bgClr: #232946;
+  /* --bgClr: #232946; */
+  --bgClr: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
   --textColor: #fffffe;
 }
 
@@ -27,11 +28,11 @@ body {
 
   font-family: 'Roboto', sans-serif;
 
-  padding: 0 10vw;
+  padding: 0 10vw 5rem;
 }
 
 @media only screen and (max-width: 500px) {
   body {
-    padding: 0 5vw;
+    padding: 0 5vw 5rem;
   }
 }
