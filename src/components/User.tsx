@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import styles from './User.module.css'
 import { UserData, Repo } from '../models/GitHub'
 import LocationIcon from '@mui/icons-material/Place'
+import LinkIcon from '@mui/icons-material/Link';
 
 type Props = {
     userData: UserData
@@ -13,7 +14,8 @@ const User: FC<Props> = ({ userData: {
      username, 
      avatarUrl, 
      followerCount, 
-     followingCount, 
+     followingCount,
+     html_url,
      location, 
      publicRepositoryCount 
 } }) => {
@@ -21,7 +23,9 @@ const User: FC<Props> = ({ userData: {
     <div className={styles.main}>
       <div className={styles.text}>
         <p className={styles.name}> { name } </p>
-        <p className={styles.username}> { username } </p>
+        <a href={html_url} target='_blank'>
+          <p className={styles.username}> <LinkIcon className={styles.linkIcon} /> <div>{ username }</div> </p>
+        </a>
         <p className={styles.bio}> { bio || "No bio available" } </p>
         <p className={styles.location}>
           { 

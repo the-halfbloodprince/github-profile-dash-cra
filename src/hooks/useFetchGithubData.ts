@@ -57,6 +57,7 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
                     followerCount: res.data.followers,
                     followingCount: res.data.following,
                     location: res.data.location,
+                    html_url: res.data.html_url,
                     publicRepositoryCount: res.data.public_repos,
                 })
 

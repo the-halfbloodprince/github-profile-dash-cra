@@ -6,6 +6,17 @@
     flex-direction: column;
     justify-content: space-between;
     gap: .6rem;
+    transition: all .2s ease;
+}
+
+.main:hover {
+    box-shadow: white 5px 5px;
+    background: #ffffff44;
+    translate: -5px -5px;
+}
+
+.main * {
+    word-wrap: break-word;
 }
 
 .numbers {
@@ -28,6 +39,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: .3rem;
+    margin-bottom: 1rem;
 }
 
 .lang {

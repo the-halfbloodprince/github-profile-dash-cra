@@ -35,10 +35,23 @@
     font-weight: 600;
 }
 
+.linkIcon {
+    font-size: 2rem;
+    rotate: 30deg;
+}
+
 .username {
     font-family: monospace;
     font-size: 2rem;
     color: #999;
+    transition: all .2s ease;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+
+.username:hover {
+    color: white;
 }
 
 .bio {

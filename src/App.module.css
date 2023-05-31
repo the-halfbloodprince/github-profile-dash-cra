@@ -1,3 +1,18 @@
+.noUser {
+    font-size: 5rem;
+    text-align: center;
+    width: 100%;
+    height: 70vh;
+    display: grid;
+    color: #ffffff99;
+    place-items: center;
+}
+
+.noUser span {
+    color: white;
+    display: inline;
+}
+
 .input__section {
     display: flex;
     margin: 0 auto;
@@ -6,24 +21,32 @@
     align-items: center;
 }
 
-.input__section p {
+.input__section > p {
     font-size: 3rem;
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .input {
     font-size: 2.5rem;
     border-radius: .8rem;
     padding: 1rem 2rem;
-    background: #ffffff33;
+    background: #ffffffcc;
     outline: transparent;
     border: none;
-    color: white;
+    color: black;
     max-width: 90vw;
+    font-family: monospace;
 }
 
 .input:focus {
     outline: transparent;
+}
+
+.arrow {
+    font-size: 3rem;
+    margin-left: 1rem;
 }
 
 /* .input  */

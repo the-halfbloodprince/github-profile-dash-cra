@@ -13,34 +13,37 @@ const RepoCard: FC<Props> = ({ repo: {
     name, 
     description, 
     forks_count: forkCount, 
-    watchers_count: watcherCount, 
+    watchers_count: watcherCount,
+    html_url,
     languages 
 } }) => {
   return (
     <div className={styles.main}>
-        <div className={styles.left}>
-            <h1> {name} </h1>
-            <p> {description} </p>
-        </div>
-        <div className={styles.langs}>
-            {
-                languages.map(lang => (
-                    <div className={styles.lang}>
-                        {lang.name}
-                    </div>
-                ))
-            }
-        </div>
-        <div className={styles.numbers}>
-            <div>
-                <ForkIcon className={styles.icon} /> 
-                <div>{forkCount}</div>
+        <a href={html_url} target='_blank'>
+            <div className={styles.left}>
+                <h1> {name} </h1>
+                <p> {description} </p>
             </div>
-            <div> 
-                <EyeIcon className={styles.icon} />
-                <div>{watcherCount}</div> 
+            <div className={styles.langs}>
+                {
+                    languages.map(lang => (
+                        <div className={styles.lang}>
+                            {lang.name}
+                        </div>
+                    ))
+                }
             </div>
-        </div>
+            <div className={styles.numbers}>
+                <div>
+                    <ForkIcon className={styles.icon} /> 
+                    <div>{forkCount}</div>
+                </div>
+                <div> 
+                    <EyeIcon className={styles.icon} />
+                    <div>{watcherCount}</div> 
+                </div>
+            </div>
+        </a>
     </div>
   )
 }

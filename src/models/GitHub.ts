@@ -4,6 +4,7 @@ export type UserData = {
     avatarUrl: string
     bio: string
     location: string
+    html_url: string
     followerCount: number
     followingCount: number
     publicRepositoryCount: number

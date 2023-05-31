@@ -7,15 +7,17 @@ import UserDataLoading from './components/UserDataLoading';
 import User from './components/User';
 import UserDataError from './components/UserDataError';
 import { MenuItem, Pagination, Select, SelectChangeEvent } from '@mui/material';
-import RepoLoading from './components/RepoLoading';
 import Repos from './components/Repos';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import LoadingRepos from './components/ReposLoading';
+import RepoError from './components/RepoError';
 
 // type PerPageCount = 5 | 10 | 15 | 20
 
 function App() {
 
   const usernameInputRef = useRef<HTMLInputElement>(null)
-  const [username, setUsername] = useState<string>("the-halfbloodprince")
+  const [username, setUsername] = useState<string>("")
   const [page, setPage] = useState<number>(1)
   const [itemsPerPage, setItemsPerPage] = useState<number>(12)
 
@@ -49,42 +51,35 @@ function App() {
       
       {/* Header */}
       <div className={styles.input__section}>
-        <p><b>GitHub</b> Username</p>
+        <p>
+          <div><b>GitHub</b> Username</div> 
+          <ArrowForwardIcon className={styles.arrow} />
+        </p>
 
         <input 
           className={styles.input}
           ref={usernameInputRef}
           onKeyDown={handleSubmit}
         />
-        {/* <TextField 
-          className={styles.input}
-          label="username" 
-          variant="outlined"
-          inputRef={usernameInputRef}
-          onKeyDown={handleSubmit}
-          size='medium'
-          // sx={{
-          //   fontSize: '3rem',
-
-          // }}
-        /> */}
       </div>
 
       {/* User */}
       {
-        username && (
+        username ? (
           userLoading ? <UserDataLoading /> : (
             userDataError || !userData ? <UserDataError /> : <User userData={userData} />
           )
+        ) : (
+          <div className={styles.noUser}>Enter the username of your GitHub Profile and hit Enter</div>
         )
       }
 
       {/* repos section */}
       {
-          (userData && repos) && (
+          (userData) && (
               <>
                 <div className={styles.repos_table_header}>
-                  <p className={styles.repos_heading}>Repositories {page} </p>
+                  <p className={styles.repos_heading}>Repositories</p>
                   <Select
                     value={itemsPerPage.toString()}
                     label="Items"
@@ -101,7 +96,9 @@ function App() {
                 </div>
 
                 {
-                    reposLoading ? <RepoLoading count={itemsPerPage} /> : <Repos repos={repos} />
+                    reposLoading ? <LoadingRepos count={itemsPerPage} /> : (
+                      (reposError || !repos) ? <RepoError /> : <Repos repos={repos} />
+                    )
                 }
 
                 <Pagination
