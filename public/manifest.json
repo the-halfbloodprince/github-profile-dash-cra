@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Github Profile Dash",
+  "name": "Github Profile Dash with CRA",
   "icons": [
     {
       "src": "favicon.ico",
