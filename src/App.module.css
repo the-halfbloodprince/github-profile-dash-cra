@@ -1,0 +1,35 @@
+.input__section {
+    display: flex;
+    margin: 0 auto;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.input__section p {
+    font-size: 3rem;
+    width: 100%;
+}
+
+.input {
+    font-size: 2.5rem;
+    border-radius: .8rem;
+    padding: 1rem 2rem;
+    background: #ffffff33;
+    outline: transparent;
+    border: none;
+    color: white;
+    max-width: 90vw;
+}
+
+.input:focus {
+    outline: transparent;
+}
+
+/* .input  */
+
+@media only screen and (max-width: 800px) {
+    .input__section {
+        flex-direction: column;
+    }
+}
