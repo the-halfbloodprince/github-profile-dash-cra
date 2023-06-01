@@ -1,66 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import type { UserData, Repo, Lang } from '../models/GitHub'
+import type { Repo, Lang } from '../models/GitHub'
 
-export const useFetchUserData = (username: string, page: number, per_page: number) => {
+export const useFetchReposData = (username: string, page: number, per_page: number) => {
 
-    const [userDataError, setUserDataError] = useState<number>(0)
     const [reposError, setReposError] = useState(null)
-    const [userData, setUserData] = useState<UserData | null>(null)
     const [repos, setRepos] = useState<Repo[] | null>(null)
-    const [userLoading, setUserLoading] = useState(false)
     const [reposLoading, setReposLoading] = useState(false)
 
     const githubBase = 'https://api.github.com'
-    const userDataApiUrl = `${githubBase}/users/${username}`
     const userReposApiUrl = `${githubBase}/users/${username}/repos?page=${page}&per_page=${per_page}`
-
-    useEffect(() => {
-
-        console.log('useeffect1 triggered')
-        
-        if (!username) {
-            console.log('exit')
-            console.log(username)
-            return
-        }
-        
-        setUserLoading(true)
-        console.log('loading')
-        
-        axios
-            .get(userDataApiUrl, {
-                headers: {
-                    'Authorization': process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
-                }
-            })
-            .then(res => {
-                
-                // Set data
-                setUserData({
-                    name: res.data.name,
-                    username: res.data.login,
-                    bio: res.data.bio,
-                    avatarUrl: res.data.avatar_url,
-                    followerCount: res.data.followers,
-                    followingCount: res.data.following,
-                    location: res.data.location,
-                    html_url: res.data.html_url,
-                    publicRepositoryCount: res.data.public_repos,
-                })
-
-            }).catch(err => {
-                setUserDataError(err.response.status)
-            }).finally(() => {
-                setUserLoading(false)
-            })
-
-        return () => {
-            setUserData(null)
-            setRepos(null)
-        }
-
-    }, [username])
 
     useEffect(() => {
 
@@ -76,9 +25,10 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
                 }
             })
             .then(res => {
-                console.log(res.data)
-                const data = res.data as Repo[]
-                
+
+                // construct the repos from the response
+
+                const data = res.data as Repo[]                
                 const finalRepos: Repo[] = []
 
                 data.map(repo => {
@@ -98,6 +48,8 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
                 return finalRepos
 
             }).then(async (finalRepos: Repo[]) => {
+
+                // fetch all the languages based on their languages url
                 
                 for (let i = 0; i < finalRepos.length; i++) {
                     const url = finalRepos[i].languages_url as string
@@ -124,7 +76,6 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
     }, [username, page, per_page])
 
     return {
-        userData, userLoading, userDataError,
         repos, reposLoading, reposError 
     }
 

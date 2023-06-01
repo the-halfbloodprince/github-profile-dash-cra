@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './App.module.css';
-import { useFetchUserData } from './hooks/useFetchGithubData';
+// import { useFetchUserData } from './hooks/useFetchGithubData';
 import UserLoadingScreen from './components/User/User_Loading';
 import User from './components/User/User';
 import UserErrorScreen from './components/User/User_Error';
@@ -9,6 +9,8 @@ import Repos from './components/Repos/Repos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LoadingRepos from './components/Repos/Repos_Loading';
 import RepoError from './components/Repos/Repos_Error';
+import { useFetchUserData } from './hooks/useFetchUser';
+import { useFetchReposData } from './hooks/useFetchRepos';
 
 function App() {
 
@@ -23,11 +25,18 @@ function App() {
   const [itemsPerPage, setItemsPerPage] = useState<number>(12)
 
   // data from custom fetch hook
-  const {
-    userData, userLoading, userDataError,
-    repos, reposLoading, reposError
-  } = useFetchUserData(username, currentPage, itemsPerPage)
-
+  const { 
+    userData, 
+    userLoading, 
+    userDataError 
+  } = useFetchUserData(username)
+  
+  const { 
+    repos, 
+    reposLoading, 
+    reposError 
+  } = useFetchReposData(username, currentPage, itemsPerPage)
+  
   // reset the current page to 1 every time username changes
   useEffect(() => {
     setCurrentPage(1)
