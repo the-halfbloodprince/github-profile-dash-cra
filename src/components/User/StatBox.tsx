@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { Stack, Typography, useTheme, alpha } from '@mui/material'
-import styles from './StatBox.module.css'
 
 type Props = {
     stat: number

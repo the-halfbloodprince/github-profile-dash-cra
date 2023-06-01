@@ -32,7 +32,6 @@ const User: FC<Props> = ({ userData: {
       sx={{
         background: theme.palette.background.paper,
         borderRadius: '16px',
-        // color: theme.palette.common.black
       }}
     >
       <div className={styles.text}>
@@ -53,7 +52,7 @@ const User: FC<Props> = ({ userData: {
             }}  
           > <LinkIcon className={styles.linkIcon} /> <div>{ username }</div> </Typography>
         </a>
-        
+
         {/* Bio */}
         { bio && <p className={styles.bio}> { bio } </p> }
         

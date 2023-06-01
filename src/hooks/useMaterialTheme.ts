@@ -1,5 +1,4 @@
 import { createTheme } from "@mui/material";
-import { useState } from "react"
 
 export const useMaterialTheme = (darkModeEnabled: boolean) => {
 

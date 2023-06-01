@@ -3,19 +3,21 @@ import styles from './App.module.css';
 import UserLoadingScreen from './components/User/User_Loading';
 import User from './components/User/User';
 import UserErrorScreen from './components/User/User_Error';
-import { Box, Container, MenuItem, Pagination, Select, SelectChangeEvent, TextField, Typography, ThemeProvider, Stack } from '@mui/material';
+import { Pagination, SelectChangeEvent } from '@mui/material';
 import Repos from './components/Repos/Repos';
 import LoadingRepos from './components/Repos/Repos_Loading';
 import RepoError from './components/Repos/Repos_Error';
 import { useFetchUserData } from './hooks/useFetchUser';
 import { useFetchReposData } from './hooks/useFetchRepos';
 import { useTheme } from '@mui/material/styles';
-import { useMaterialTheme } from './hooks/useMaterialTheme';
-import ThemeIcon from './components/ThemeIcon'
 import NoUser from './components/App/NoUser';
 import Header from './components/App/Header';
 import Main from './components/App/AppLayout'
 import ItemsPerPageSelect from './components/App/ItemsPerPageSelect';
+
+// ! using prop drilling for the initial one or two layers
+// ! to facilitate some things which do not require app wide consumption
+// ! while also making sure to not make everything into components and prop drill everything
 
 type AppProps = {
   darkModeEnabled: boolean
