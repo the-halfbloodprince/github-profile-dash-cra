@@ -30,14 +30,14 @@ const Header: FC<Props> = ({
             >
                 <ThemeIcon darkMode={darkModeEnabled} onClick={themeToggler} />
                 <Typography 
-                variant='h1'
-                sx={{
-                    fontSize: '3rem'
-                }}
+                    variant='h1'
+                    sx={{
+                        fontSize: '3rem'
+                    }}
                 >
-                <div>
-                    <b className={styles.github}>GitHub</b> <span>Username</span>
-                </div>
+                    <div>
+                        Your <b className={styles.github}>GitHub</b> <span>Username</span>
+                    </div>
                 </Typography> 
                 <ArrowForwardIcon className={styles.arrow} />
             </Stack>

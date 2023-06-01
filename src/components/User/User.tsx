@@ -41,7 +41,7 @@ const User: FC<Props> = ({ userData: {
         
         {/* Username */}
         <a href={html_url} target='_blank'>
-          <Typography 
+          <Box 
             className={styles.username}
             sx={{
               color: theme.palette.text.secondary,
@@ -50,7 +50,7 @@ const User: FC<Props> = ({ userData: {
                 color: theme.palette.text.primary,
               }
             }}  
-          > <LinkIcon className={styles.linkIcon} /> <div>{ username }</div> </Typography>
+          > <LinkIcon className={styles.linkIcon} /> <div>{ username }</div> </Box>
         </a>
 
         {/* Bio */}
@@ -59,12 +59,12 @@ const User: FC<Props> = ({ userData: {
         {/* Location */}
         {
             location && (
-                <p className={styles.location}>
-                  <LocationIcon sx={{
-                    color: theme.palette.text.primary
-                  }} />
-                  <p>{ location }</p>
-              </p>
+              <div className={styles.location}>
+                <LocationIcon sx={{
+                  color: theme.palette.text.primary
+                }} />
+                <p>{ location }</p>
+              </div>
             )
         }
 

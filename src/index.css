@@ -37,3 +37,8 @@ body {
     padding: 0 5vw 5rem;
   }
 } */
+
+*::selection {
+  background: #865DFF;
+  color: white;
+}

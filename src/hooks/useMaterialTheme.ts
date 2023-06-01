@@ -24,6 +24,18 @@ export const useMaterialTheme = (darkModeEnabled: boolean) => {
           paper: '#ffffff11',
         },
       },
+      components: {
+        MuiOutlinedInput: {
+          styleOverrides: {
+            input: {
+              '&:-webkit-autofill': {
+                '-webkit-box-shadow': '0 0 0 100px #000 inset',
+                '-webkit-text-fill-color': '#fff',
+              }
+            }
+          }
+        }
+      }
     });
 
     const lightTheme = createTheme({
