@@ -12,17 +12,17 @@ const UserDataLoading: FC<Props> = () => {
       <div className={styles.text}>
         <p className={styles.name}> <Skeleton animation="wave" variant='text' /> </p>
         {/* <a href={html_url} target='_blank'> */}
-          <p className={styles.username}> <Skeleton animation="wave" variant='text' /> </p>
+          <p className={styles.username}> <Skeleton animation="wave" variant='rectangular' width={200} /> </p>
         {/* </a> */}
         <p className={styles.bio}> <Skeleton animation="wave" variant='text' /> </p>
         <p className={styles.location}>
-          <LocationIcon />
-          <Skeleton animation="wave" variant='text' />
+          {/* <LocationIcon /> */}
+          <Skeleton animation="wave" variant='rectangular' width={100} />
         </p>
         <div className={styles.numbers}>
-          <p className={styles.followerCount}> Followers: <span> <Skeleton animation="wave" variant='rectangular' /> </span> </p>
-          <p className={styles.followingCount}> Following: <span> <Skeleton animation="wave" variant='rectangular' /> </span> </p>
-          <p className={styles.publicRepositoryCount}> Public Repositories: <span> <Skeleton animation="wave" variant='rectangular' /> </span> </p>
+          <Skeleton animation="wave" variant='rectangular' width={200} height={75} className={styles.rounded} />
+          <Skeleton animation="wave" variant='rectangular' width={200} height={75} className={styles.rounded} />
+          <Skeleton animation="wave" variant='rectangular' width={200} height={75} className={styles.rounded} />
         </div>
       </div>
       <div className={styles.img_section}>
