@@ -3,9 +3,9 @@ import styles from './App.module.css';
 import TextField from '@mui/material/TextField'
 import axios from 'axios';
 import { useFetchUserData } from './hooks/useFetchGithubData';
-import UserDataLoading from './components/UserDataLoading';
-import User from './components/User';
-import UserDataError from './components/UserDataError';
+import UserDataLoading from './components/User/User_Loading';
+import User from './components/User/User';
+import UserDataError from './components/User/User_Error';
 import { MenuItem, Pagination, Select, SelectChangeEvent } from '@mui/material';
 import Repos from './components/Repos/Repos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styles from './User.module.css'
-import { UserData, Repo } from '../models/GitHub'
+import { UserData, Repo } from '../../models/GitHub'
 import LocationIcon from '@mui/icons-material/Place'
 import LinkIcon from '@mui/icons-material/Link';
 
@@ -9,6 +9,7 @@ type Props = {
 }
 
 const User: FC<Props> = ({ userData: {
+
      name, 
      bio, 
      username, 
@@ -18,7 +19,9 @@ const User: FC<Props> = ({ userData: {
      html_url,
      location, 
      publicRepositoryCount 
-} }) => {
+
+  } }) => {
+  
   return (
     <div className={styles.main}>
       <div className={styles.text}>
