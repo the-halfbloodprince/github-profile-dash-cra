@@ -1,0 +1,65 @@
+.input__section {
+    display: flex;
+    margin: 0 auto;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.input__section > p {
+    font-size: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.github {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+
+    overflow: hidden;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.input {
+    font-size: 2.5rem;
+    border-radius: .8rem;
+    padding: 1rem 2rem;
+    background: #ffffffcc;
+    outline: transparent;
+    border: none;
+    color: black;
+    max-width: 90vw;
+    font-family: monospace;
+}
+
+.input:focus {
+    outline: transparent;
+}
+
+.arrow {
+    font-size: 3rem;
+    margin-left: 1rem;
+}
+
+/* .input  */
+
+@media only screen and (max-width: 800px) {
+    .input__section {
+        flex-direction: column;
+    }
+}

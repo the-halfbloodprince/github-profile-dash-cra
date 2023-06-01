@@ -4,6 +4,7 @@ import { UserData, Repo } from '../../models/GitHub'
 import { Paper, useTheme, alpha, Typography, Box, Stack } from '@mui/material'
 import LocationIcon from '@mui/icons-material/Place'
 import LinkIcon from '@mui/icons-material/Link';
+import StatBox from './StatBox'
 
 type Props = {
     userData: UserData
@@ -52,21 +53,21 @@ const User: FC<Props> = ({ userData: {
             }}  
           > <LinkIcon className={styles.linkIcon} /> <div>{ username }</div> </Typography>
         </a>
+        
         {/* Bio */}
-        <p className={styles.bio}> { bio || "No bio available" } </p>
+        { bio && <p className={styles.bio}> { bio } </p> }
+        
         {/* Location */}
-        <p className={styles.location}>
-          { 
+        {
             location && (
-              <>
-                <LocationIcon sx={{
-                  color: theme.palette.text.primary
-                }} />
-                <p>{ location }</p>
-              </>
+                <p className={styles.location}>
+                  <LocationIcon sx={{
+                    color: theme.palette.text.primary
+                  }} />
+                  <p>{ location }</p>
+              </p>
             )
-          }
-        </p>
+        }
 
         {/* Stats */}
         <Stack
@@ -79,84 +80,31 @@ const User: FC<Props> = ({ userData: {
         >
 
           {/* followers */}
-          <Stack
-          direction={'row'}
-          alignItems={'center'}
-          justifyContent={'center'}
-          gap={'.6rem'}
-           sx={{
-              fontSize: '1.2rem',
-              boxShadow: `${theme.palette.text.primary} 2px 2px 1px`,
-              borderRadius: '8px',
-              padding: '.8rem 1rem',
-              fontWeight: 600,
-              background: alpha(theme.palette.background.paper, .2),
-              color: alpha(theme.palette.text.primary, .5), 
-            }} 
-            className={styles.followerCount}>
-               Followers: 
-               <Typography sx={{
-                 fontWeight: 600,
-                 color: theme.palette.text.primary
-               }}>
-                 { followerCount } 
-                </Typography> 
-          </Stack>
+          <StatBox 
+            stat={followerCount}
+            of={"Followers"}
+          />
 
           {/* following */}
-          <Stack
-          direction={'row'}
-          alignItems={'center'}
-          justifyContent={'center'}
-          gap={'.6rem'}
-           sx={{
-              fontSize: '1.2rem',
-              boxShadow: `${theme.palette.text.primary} 2px 2px 1px`,
-              borderRadius: '8px',
-              padding: '.8rem 1rem',
-              fontWeight: 600,
-              background: alpha(theme.palette.background.paper, .2),
-              color: alpha(theme.palette.text.primary, .5), 
-            }} 
-            className={styles.followerCount}>
-               Following: 
-               <Typography sx={{
-                fontWeight: 600,
-                color: theme.palette.text.primary
-               }}>
-                 { followingCount } 
-                </Typography> 
-          </Stack>
+          <StatBox 
+            stat={followingCount}
+            of={"Following"}
+          />
           
           {/* Public Repositories */}
-          <Stack
-          direction={'row'}
-          alignItems={'center'}
-          justifyContent={'center'}
-          gap={'.6rem'}
-           sx={{
-              fontSize: '1.2rem',
-              boxShadow: `${theme.palette.text.primary} 2px 2px 1px`,
-              borderRadius: '8px',
-              padding: '.8rem 1rem',
-              fontWeight: 600,
-              background: alpha(theme.palette.background.paper, .2),
-              color: alpha(theme.palette.text.primary, .5), 
-            }} 
-            className={styles.followerCount}>
-               Public Repositories: 
-               <Typography sx={{
-                fontWeight: 600,
-                color: theme.palette.text.primary
-               }}>
-                 { publicRepositoryCount } 
-                </Typography> 
-          </Stack>
+          <StatBox 
+            stat={publicRepositoryCount}
+            of={"Public Repos"}
+          />
+          
         </Stack>
       </div>
+
+      {/* avatar */}
       <div className={styles.img_section}>
         <img src={avatarUrl} alt={`${name}'s profile picture`} />
       </div>
+
     </Paper>
   )
 }

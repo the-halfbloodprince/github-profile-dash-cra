@@ -5,7 +5,6 @@ import User from './components/User/User';
 import UserErrorScreen from './components/User/User_Error';
 import { Box, Container, MenuItem, Pagination, Select, SelectChangeEvent, TextField, Typography, ThemeProvider, Stack } from '@mui/material';
 import Repos from './components/Repos/Repos';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LoadingRepos from './components/Repos/Repos_Loading';
 import RepoError from './components/Repos/Repos_Error';
 import { useFetchUserData } from './hooks/useFetchUser';
@@ -13,6 +12,10 @@ import { useFetchReposData } from './hooks/useFetchRepos';
 import { useTheme } from '@mui/material/styles';
 import { useMaterialTheme } from './hooks/useMaterialTheme';
 import ThemeIcon from './components/ThemeIcon'
+import NoUser from './components/App/NoUser';
+import Header from './components/App/Header';
+import Main from './components/App/AppLayout'
+import ItemsPerPageSelect from './components/App/ItemsPerPageSelect';
 
 type AppProps = {
   darkModeEnabled: boolean
@@ -71,74 +74,15 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
 
   // the UI
   return (
-    <Box 
-      className="App"
-      // maxWidth={false}
-      sx={{
-        background: theme.palette.background.default,
-        minHeight: '100svh',
-        width: '100%',
-        padding: '5rem 10vw',
-        color: theme.palette.text.primary
-        // px: '10vw'
-      }}
-    >
-
-
+    <Main>
       
       {/* Header */}
-      <div className={styles.input__section}>
-        <Stack
-          direction={'row'}
-          alignItems={'center'}
-        >
-          <ThemeIcon darkMode={darkModeEnabled} onClick={themeToggler} />
-          <Typography 
-            variant='h1'
-            sx={{
-              fontSize: '3rem'
-            }}
-          >
-            <div>
-              <b>GitHub</b> <span>Username</span>
-            </div>
-          </Typography> 
-          <ArrowForwardIcon className={styles.arrow} />
-        </Stack>
-
-        {/* input element */}
-        {/* <input 
-          className={styles.input}
-          ref={usernameInputRef}
-          onKeyDown={handleUsernameSubmit}
-        /> */}
-        <TextField
-           inputRef={usernameInputRef}
-           onKeyDown={handleUsernameSubmit}
-          //  label="Username"
-          //  fullWidth
-           autoFocus
-          //  InputLabelProps={{
-          //   style: {
-          //     fontSize: '2rem'
-          //   }
-          //  }}
-           inputProps={{
-            style: {
-              fontSize: '2.5rem',
-              outlineColor: 'transparent',
-              // color: 'black'
-              border: `solid ${theme.palette.primary.main} 5px`,
-              // borderRadius: '25px',
-            }
-          }}
-          sx={{
-            outline: 'transparent',
-            border: 'none',
-            // borderRadius: '25px',
-           }}
-        />
-      </div>
+      <Header
+          darkModeEnabled={darkModeEnabled}
+          handleUsernameSubmit={handleUsernameSubmit}
+          themeToggler={themeToggler}
+          usernameInputRef={usernameInputRef}
+      />
 
       {/* User Section */}
 
@@ -166,26 +110,15 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
               <>
                 {/* the repositories grid header */}
                 <div className={styles.repos_table_header}>
-                  
-                  <p className={styles.repos_heading}>Repositories</p>
-                  
+                  <p className={styles.repos_heading}>
+                    Repositories
+                  </p>
                   {/* select element for itemsPerPage */}
-                  <Select
-                    value={itemsPerPage.toString()}
-                    label="Items"
-                    onChange={handleItemsPerPageChange}
-                    sx={{
-                      height: 'fit-content'
-                    }}
-                  >
-                    {/* the options */}
-                    {
-                      // loop through all the avialable sizes for itemsPerPage
-                      availableValuesForItemsPerPage.map((size) => (
-                        <MenuItem value={size}>{size}</MenuItem>
-                      ))
-                    }
-                  </Select>
+                  <ItemsPerPageSelect
+                      availableValuesForItemsPerPage={availableValuesForItemsPerPage}
+                      handleItemsPerPageChange={handleItemsPerPageChange}
+                      itemsPerPage={itemsPerPage}
+                  />
                 </div>
 
                 {/* the repos list section */}
@@ -219,28 +152,10 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
               </>
           )
       }
-
-    </Box>
+    </Main>
   );
 }
 
-const NoUser = () => {
 
-  const theme = useTheme()
-
-  return (
-    <Typography 
-      variant='h1'
-      className={styles.noUser} 
-      sx={{
-        textAlign: 'center',
-        color: theme.palette.primary.main,
-        fontWeight: 500
-        
-      }}>
-        Enter the username of your GitHub Profile and hit Enter
-    </Typography>
-  )
-}
 
 export default App;

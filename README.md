@@ -78,4 +78,4 @@ The input field may confuse people as it doesn't have a search button, but to se
 [x] ~More integration with Material UI~
 
 
-[ ] Final cleanup and refactor
+[x] Final cleanup and refactor
