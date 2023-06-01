@@ -33,7 +33,7 @@ const ItemsPerPageSelect: FC<Props> = ({
             {
                 // loop through all the avialable sizes for itemsPerPage
                 availableValuesForItemsPerPage.map((size) => (
-                    <MenuItem value={size}>{size}</MenuItem>
+                    <MenuItem key={size} value={size}>{size}</MenuItem>
                 ))
             }
         </Select>

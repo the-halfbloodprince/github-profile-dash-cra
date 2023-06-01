@@ -28,8 +28,8 @@ const LoadingRepoCard: FC<Props> = () => {
             </div>
             <div className={styles.langs}>
                 {
-                    Array.from({ length: numOfLangs }).map(lang => (
-                        <div className={styles.lang}>
+                    Array.from({ length: numOfLangs }).map((lang, idx) => (
+                        <div className={styles.lang} key={idx}>
                             <Skeleton animation={animationType} variant='text' />
                         </div>
                     ))

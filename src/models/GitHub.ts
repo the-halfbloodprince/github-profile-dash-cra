@@ -16,6 +16,7 @@ export type Lang = {
 }
 
 export type Repo = {
+    id: number
     name: string
     description: string
     // language: string

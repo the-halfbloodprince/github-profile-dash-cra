@@ -10,8 +10,8 @@ const LoadingRepos:FC<Props> = ({ count }) => {
   return (
     <div className={styles.repos_grid}>
         {
-            Array.from({length: count}).map(repo => (
-                <LoadingRepoCard />
+            Array.from({length: count}).map((repo, idx) => (
+                <LoadingRepoCard key={idx} />
             ))
         }
     </div>

@@ -46,7 +46,7 @@ const RepoCard: FC<Props> = ({ repo: {
                 <div className={styles.langs}>
                     {
                         languages.map(lang => (
-                            <div className={styles.lang}>
+                            <div className={styles.lang} key={lang.name}>
                                 {lang.name}
                             </div>
                         ))

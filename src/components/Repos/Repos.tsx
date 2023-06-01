@@ -12,7 +12,7 @@ const Repos:FC<Props> = ({ repos }) => {
     <div className={styles.repos_grid}>
         {
             repos.map(repo => (
-                <RepoCard repo={repo} />
+                <RepoCard repo={repo} key={repo.id} />
             ))
         }
     </div>

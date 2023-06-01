@@ -7,17 +7,18 @@ const NoUser = () => {
 
     return (
         <Typography 
-        variant='h1'
-        fontSize={{
-            xs: '4rem',
-            md: '6rem'
-        }}
-        className={styles.noUser} 
-        sx={{
-            textAlign: 'center',
-            color: theme.palette.primary.main,
-            fontWeight: 500
-        }}>
+            variant='h1'
+            fontSize={{
+                xs: '4rem',
+                md: '6rem'
+            }}
+            className={styles.noUser} 
+            sx={{
+                textAlign: 'center',
+                color: theme.palette.primary.main,
+                fontWeight: 500
+            }}
+        >
             Enter your GitHub username and hit Enter
         </Typography>
     )

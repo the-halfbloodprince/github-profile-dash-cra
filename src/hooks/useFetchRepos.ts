@@ -28,6 +28,7 @@ export const useFetchReposData = (username: string, page: number, per_page: numb
 
                 data.map(repo => {
                     const r: Repo = {
+                        id: repo.id,
                         name: repo.name,
                         description: repo.description,
                         forks_count: repo.forks_count,
