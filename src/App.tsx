@@ -10,10 +10,10 @@ import RepoError from './components/Repos/Repos_Error';
 import { useFetchUserData } from './hooks/useFetchUser';
 import { useFetchReposData } from './hooks/useFetchRepos';
 import { useTheme } from '@mui/material/styles';
-import NoUser from './components/App/NoUser';
-import Header from './components/App/Header';
-import Main from './components/App/AppLayout'
-import ItemsPerPageSelect from './components/App/ItemsPerPageSelect';
+import NoUser from './components/HomePage/NoUser';
+import Header from './components/HomePage/Header';
+import Main from './components/HomePage/AppLayout'
+import ItemsPerPageSelect from './components/HomePage/ItemsPerPageSelect';
 
 // ! using prop drilling for the initial one or two layers
 // ! to facilitate some things which do not require app wide consumption
@@ -117,6 +117,7 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
                   </p>
                   {/* select element for itemsPerPage */}
                   <ItemsPerPageSelect
+                      disabled={reposLoading || userLoading}
                       availableValuesForItemsPerPage={availableValuesForItemsPerPage}
                       handleItemsPerPageChange={handleItemsPerPageChange}
                       itemsPerPage={itemsPerPage}
@@ -142,6 +143,7 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
 
                 {/* pagination switcher component */}
                 <Pagination
+                  disabled={reposLoading || userLoading}
                   page={currentPage}
                   // count of pages is generated dynamically based on the number of public repos user has 
                   // and the number of repos he wants to show at a time

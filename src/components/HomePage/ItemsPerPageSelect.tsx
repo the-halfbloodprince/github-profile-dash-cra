@@ -5,18 +5,21 @@ type Props = {
     itemsPerPage: number
     handleItemsPerPageChange: (e: SelectChangeEvent) => void
     availableValuesForItemsPerPage: string[]
+    disabled: boolean
 }
 
 const ItemsPerPageSelect: FC<Props> = ({ 
     
     itemsPerPage, 
     handleItemsPerPageChange,
-    availableValuesForItemsPerPage
+    availableValuesForItemsPerPage,
+    disabled
 
 }) => {
 
     return (
         <Select
+            disabled={disabled}
             value={itemsPerPage.toString()}
             label="Items"
             onChange={handleItemsPerPageChange}

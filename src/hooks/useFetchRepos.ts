@@ -19,15 +19,10 @@ export const useFetchReposData = (username: string, page: number, per_page: numb
         }
 
         axios
-            .get(userReposApiUrl, {
-                headers: {
-                    'Authorization': process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
-                }
-            })
+            .get(userReposApiUrl)
             .then(res => {
 
                 // construct the repos from the response
-
                 const data = res.data as Repo[]                
                 const finalRepos: Repo[] = []
 

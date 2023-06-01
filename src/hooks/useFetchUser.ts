@@ -20,11 +20,7 @@ export const useFetchUserData = (username: string) => {
         setUserLoading(true)
         
         axios
-            .get(userDataApiUrl, {
-                headers: {
-                    'Authorization': process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN
-                }
-            })
+            .get(userDataApiUrl)
             .then(res => {
                 
                 // Set data
