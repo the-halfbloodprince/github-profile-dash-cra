@@ -53,13 +53,14 @@ The input field may confuse people as it doesn't have a search button, but to se
 ![](./public/ss2.jpg)
 
 [x] Error State handled - User as well as Repos
-![](./public/ss3.jpg)
 
 
 [x] Pagination
 ![](./public/ss4.jpg)
 
-[ ] Dark Theme / Light Theme Toggle - was in the plan to be implemented but I'm skipping it for now - have to come up with some design first on what to change
+[x] Dark Theme / Light Theme Toggle - done
+![](./public/darkMode.jpg)
+![](./public/lightMode.jpg)
 
 ## Next Todos:
 [x] ~The Code can be significantly cleaned up and refactored, which will be my next step.~
@@ -71,4 +72,10 @@ The input field may confuse people as it doesn't have a search button, but to se
 [x] ~Improve UI~
 
 
-[ ] Dark and Light Theme
+[x] ~Dark and Light Theme~
+
+
+[x] ~More integration with Material UI~
+
+
+[ ] Final cleanup and refactor

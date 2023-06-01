@@ -23,17 +23,17 @@ a {
 
 /* body styles */
 body {
-  min-height: 100vh;
-  background: var(--bgClr);
-  color: var(--textColor);
+  /* min-height: 100vh; */
+  /* background: var(--bgClr);
+  color: var(--textColor); */
 
   font-family: 'Roboto', sans-serif;
 
-  padding: 0 10vw 5rem;
+  /* padding: 0 10vw 5rem; */
 }
 
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) {
   body {
     padding: 0 5vw 5rem;
   }
-}
+} */

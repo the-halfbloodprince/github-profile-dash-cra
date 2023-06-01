@@ -68,23 +68,18 @@
     font-size: 1.2rem;
 }
 
-.numbers {
+/* .numbers {
     display: flex;
     gap: 1rem;
 }
 
 .numbers p {
     background: #ffffff33;
-    color: #ffffff77;
     font-size: 1.2rem;
     font-weight: 600;
     padding: 1rem;
-    border-radius: 1rem;
-}
-
-.numbers span {
-    color: white;
-}
+    border-radius: 1rem; */
+/* } */
 
 @media only screen and (max-width: 950px) {
     .main {

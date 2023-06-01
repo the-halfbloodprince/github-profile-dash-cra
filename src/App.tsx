@@ -1,17 +1,29 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useEffect, useRef, useState, FC } from 'react';
 import styles from './App.module.css';
 import UserLoadingScreen from './components/User/User_Loading';
 import User from './components/User/User';
 import UserErrorScreen from './components/User/User_Error';
-import { MenuItem, Pagination, Select, SelectChangeEvent } from '@mui/material';
+import { Box, Container, MenuItem, Pagination, Select, SelectChangeEvent, TextField, Typography, ThemeProvider, Stack } from '@mui/material';
 import Repos from './components/Repos/Repos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LoadingRepos from './components/Repos/Repos_Loading';
 import RepoError from './components/Repos/Repos_Error';
 import { useFetchUserData } from './hooks/useFetchUser';
 import { useFetchReposData } from './hooks/useFetchRepos';
+import { useTheme } from '@mui/material/styles';
+import { useMaterialTheme } from './hooks/useMaterialTheme';
+import ThemeIcon from './components/ThemeIcon'
 
-function App() {
+type AppProps = {
+  darkModeEnabled: boolean
+  themeToggler: () => void
+}
+
+const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
+
+  // theme
+  const theme = useTheme()
+  // const isDarkMode = theme.palette.mode === 'dark'
 
   const availableValuesForItemsPerPage = ['12', '15', '21', '30']
 
@@ -59,20 +71,72 @@ function App() {
 
   // the UI
   return (
-    <div className="App">
+    <Box 
+      className="App"
+      // maxWidth={false}
+      sx={{
+        background: theme.palette.background.default,
+        minHeight: '100svh',
+        width: '100%',
+        padding: '5rem 10vw',
+        color: theme.palette.text.primary
+        // px: '10vw'
+      }}
+    >
+
+
       
       {/* Header */}
       <div className={styles.input__section}>
-        <p>
-          <div><b>GitHub</b> Username</div> 
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+        >
+          <ThemeIcon darkMode={darkModeEnabled} onClick={themeToggler} />
+          <Typography 
+            variant='h1'
+            sx={{
+              fontSize: '3rem'
+            }}
+          >
+            <div>
+              <b>GitHub</b> <span>Username</span>
+            </div>
+          </Typography> 
           <ArrowForwardIcon className={styles.arrow} />
-        </p>
+        </Stack>
 
         {/* input element */}
-        <input 
+        {/* <input 
           className={styles.input}
           ref={usernameInputRef}
           onKeyDown={handleUsernameSubmit}
+        /> */}
+        <TextField
+           inputRef={usernameInputRef}
+           onKeyDown={handleUsernameSubmit}
+          //  label="Username"
+          //  fullWidth
+           autoFocus
+          //  InputLabelProps={{
+          //   style: {
+          //     fontSize: '2rem'
+          //   }
+          //  }}
+           inputProps={{
+            style: {
+              fontSize: '2.5rem',
+              outlineColor: 'transparent',
+              // color: 'black'
+              border: `solid ${theme.palette.primary.main} 5px`,
+              // borderRadius: '25px',
+            }
+          }}
+          sx={{
+            outline: 'transparent',
+            border: 'none',
+            // borderRadius: '25px',
+           }}
         />
       </div>
 
@@ -156,13 +220,26 @@ function App() {
           )
       }
 
-    </div>
+    </Box>
   );
 }
 
 const NoUser = () => {
+
+  const theme = useTheme()
+
   return (
-    <div className={styles.noUser}>Enter the username of your GitHub Profile and hit Enter</div>
+    <Typography 
+      variant='h1'
+      className={styles.noUser} 
+      sx={{
+        textAlign: 'center',
+        color: theme.palette.primary.main,
+        fontWeight: 500
+        
+      }}>
+        Enter the username of your GitHub Profile and hit Enter
+    </Typography>
   )
 }
 

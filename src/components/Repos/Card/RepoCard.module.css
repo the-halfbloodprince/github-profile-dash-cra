@@ -1,19 +1,19 @@
 .main {
-    background: #ffffff22;
+    /* background: #ffffff22; */
     border-radius: 1rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: .6rem;
-    transition: all .2s ease;
+    /* transition: all 1s ease; */
 }
 
-.main:hover {
+/* .main:hover {
     box-shadow: white 5px 5px;
     background: #ffffff44;
     translate: -5px -5px;
-}
+} */
 
 .main * {
     word-wrap: break-word;

@@ -6,13 +6,21 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#6126cd',
+      main: '#865DFF',
     },
     secondary: {
-      main: '#ff0',
+      main: '#E384FF',
     },
     error: {
       main: "#f00",
+    },
+    text: {
+      primary: '#fffffe',
+      secondary: '#E384FF',
+    },
+    background: {
+      default: '#191825',
+      paper: '#865DFF',
     },
   },
 });

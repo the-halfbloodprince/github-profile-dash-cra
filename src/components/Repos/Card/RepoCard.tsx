@@ -1,8 +1,10 @@
 import React, { FC } from 'react'
 import styles from './RepoCard.module.css'
 import { Repo } from '../../../models/GitHub'
+import { Paper, useTheme, alpha } from '@mui/material'
 import EyeIcon from '@mui/icons-material/Visibility';
 import ForkIcon from '@mui/icons-material/ForkRight';
+import { trim } from '../../../utils/textUtils';
 
 type Props = {
     repo: Repo
@@ -18,12 +20,27 @@ const RepoCard: FC<Props> = ({ repo: {
     languages
 
 } }) => {
+
+    const theme = useTheme()
   
     return (
-        <div className={styles.main}>
+        <Paper
+         className={styles.main}
+         sx={{
+            borderRadius: '16px',
+            border: 'solid 3px transparent',
+            transition: 'all .2s ease',
+            '&:hover': {
+                background: "#ffffff44",
+                translate: '-5px -5px',
+                // border: `solid 3px ${theme.palette.text.primary}`,
+                boxShadow: `${theme.palette.text.primary} 5px 5px`
+            }            
+         }}
+        >
             <a href={html_url} target='_blank'>
                 <div className={styles.left}>
-                    <h1> {name} </h1>
+                    <h1> { trim(name) } </h1>
                     <p> {description} </p>
                 </div>
                 <div className={styles.langs}>
@@ -37,16 +54,20 @@ const RepoCard: FC<Props> = ({ repo: {
                 </div>
                 <div className={styles.numbers}>
                     <div>
-                        <ForkIcon className={styles.icon} /> 
+                        <ForkIcon sx={{
+                            
+                        }} /> 
                         <div>{forkCount}</div>
                     </div>
                     <div> 
-                        <EyeIcon className={styles.icon} />
+                        <EyeIcon sx={{
+                            
+                        }} />
                         <div>{watcherCount}</div> 
                     </div>
                 </div>
             </a>
-        </div>
+        </Paper>
     )
 }
 
