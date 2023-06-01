@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './App.module.css';
-// import { useFetchUserData } from './hooks/useFetchGithubData';
 import UserLoadingScreen from './components/User/User_Loading';
 import User from './components/User/User';
 import UserErrorScreen from './components/User/User_Error';
