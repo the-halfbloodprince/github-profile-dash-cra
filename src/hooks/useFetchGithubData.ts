@@ -4,7 +4,7 @@ import type { UserData, Repo, Lang } from '../models/GitHub'
 
 export const useFetchUserData = (username: string, page: number, per_page: number) => {
 
-    const [userDataError, setUserDataError] = useState(null)
+    const [userDataError, setUserDataError] = useState<number>(0)
     const [reposError, setReposError] = useState(null)
     const [userData, setUserData] = useState<UserData | null>(null)
     const [repos, setRepos] = useState<Repo[] | null>(null)
@@ -50,8 +50,7 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
                 })
 
             }).catch(err => {
-                console.log(err)
-                setUserDataError(err)
+                setUserDataError(err.response.status)
             }).finally(() => {
                 setUserLoading(false)
             })
@@ -111,8 +110,8 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
 
                 setRepos(finalRepos)
 
-            }).catch((ex) => {
-                setReposError(ex)
+            }).catch((err) => {
+                setReposError(err.response.status)
             }).finally(() => {
                 setReposLoading(false)
             })

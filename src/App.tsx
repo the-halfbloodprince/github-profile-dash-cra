@@ -67,12 +67,13 @@ function App() {
       {
         username ? (
           userLoading ? <UserDataLoading /> : (
-            userDataError || !userData ? <UserDataError /> : <User userData={userData} />
+            userDataError || !userData ? <UserDataError status={userDataError} /> : <User userData={userData} />
           )
         ) : (
           <div className={styles.noUser}>Enter the username of your GitHub Profile and hit Enter</div>
         )
       }
+      {/* <UserDataError status={403} /> */}
 
       {/* repos section */}
       {
