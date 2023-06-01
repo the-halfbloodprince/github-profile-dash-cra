@@ -1,5 +1,7 @@
 # Github Profile Task - Preimage
 
+![](./public/ss.jpg)
+
 ### Built with - Create React App
 
 ## Run:
@@ -47,14 +49,15 @@ The input field may confuse people as it doesn't have a search button, but to se
 [x] README prepared.
 
 ## (Bonus Tasks)
-[x] Loading State
+[x] Loading State - User as well as Repos
+![](./public/ss2.jpg)
 
-
-[>] Error State is handled but the UI and errors not well prepared
+[>] Error State is handled but the UI not well prepared - User as well as Repos
+![](./public/ss3.jpg)
 
 
 [x] Pagination
-
+![](./public/ss4.jpg)
 
 [ ] Dark Theme / Light Theme Toggle - was in the plan to be implemented but I'm skipping it for now, will add later after a bit of refactoring.
 
