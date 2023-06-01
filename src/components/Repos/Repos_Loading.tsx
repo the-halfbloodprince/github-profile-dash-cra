@@ -1,9 +1,6 @@
 import React, { FC } from 'react'
-import { Repo } from '../models/GitHub'
 import styles from './Repos.module.css'
-import { Stack } from '@mui/material'
-import RepoCard from './RepoCard'
-import LoadingRepoCard from './RepoLoading'
+import LoadingRepoCard from './Card/RepoCard_Loading'
 
 type Props = {
     count: number

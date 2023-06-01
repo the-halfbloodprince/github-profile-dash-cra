@@ -7,10 +7,10 @@ import UserDataLoading from './components/UserDataLoading';
 import User from './components/User';
 import UserDataError from './components/UserDataError';
 import { MenuItem, Pagination, Select, SelectChangeEvent } from '@mui/material';
-import Repos from './components/Repos';
+import Repos from './components/Repos/Repos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import LoadingRepos from './components/ReposLoading';
-import RepoError from './components/RepoError';
+import LoadingRepos from './components/Repos/Repos_Loading';
+import RepoError from './components/Repos/Repos_Error';
 
 // type PerPageCount = 5 | 10 | 15 | 20
 

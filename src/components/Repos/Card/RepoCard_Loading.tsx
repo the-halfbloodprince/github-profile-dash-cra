@@ -1,34 +1,27 @@
 import React, { FC } from 'react'
 import styles from './RepoCard.module.css'
-import { Repo } from '../models/GitHub'
-import Tooltip from '@mui/material/Tooltip'
 import EyeIcon from '@mui/icons-material/Visibility';
 import ForkIcon from '@mui/icons-material/ForkRight';
+import { Skeleton } from '@mui/material';
 
-type Props = {
-    repo: Repo
-}
+type Props = {}
 
-const RepoCard: FC<Props> = ({ repo: { 
-    name, 
-    description, 
-    forks_count: forkCount, 
-    watchers_count: watcherCount,
-    html_url,
-    languages 
-} }) => {
-  return (
-    <div className={styles.main}>
-        <a href={html_url} target='_blank'>
+const LoadingRepoCard: FC<Props> = () => {
+
+    const numOfLangs = Math.ceil(Math.random() * 5)
+    const animationType = "pulse"
+
+    return (
+        <div className={styles.main}>
             <div className={styles.left}>
-                <h1> {name} </h1>
-                <p> {description} </p>
+                <Skeleton animation={"wave"} variant='text' />
+                <Skeleton animation={"wave"} variant='text' />
             </div>
             <div className={styles.langs}>
                 {
-                    languages.map(lang => (
+                    Array.from({ length: numOfLangs }).map(lang => (
                         <div className={styles.lang}>
-                            {lang.name}
+                            <Skeleton animation={animationType} variant='text' />
                         </div>
                     ))
                 }
@@ -36,16 +29,15 @@ const RepoCard: FC<Props> = ({ repo: {
             <div className={styles.numbers}>
                 <div>
                     <ForkIcon className={styles.icon} /> 
-                    <div>{forkCount}</div>
+                    <Skeleton animation={animationType} variant='circular' />
                 </div>
                 <div> 
                     <EyeIcon className={styles.icon} />
-                    <div>{watcherCount}</div> 
+                    <Skeleton animation={animationType} variant='circular' />
                 </div>
             </div>
-        </a>
-    </div>
-  )
+        </div>
+    )
 }
 
-export default RepoCard
+export default LoadingRepoCard

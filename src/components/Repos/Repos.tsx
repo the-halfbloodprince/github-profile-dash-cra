@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
-import { Repo } from '../models/GitHub'
+import { Repo } from '../../models/GitHub'
 import styles from './Repos.module.css'
-import { Stack } from '@mui/material'
-import RepoCard from './RepoCard'
+import RepoCard from './Card/RepoCard'
 
 type Props = {
     repos: Repo[]

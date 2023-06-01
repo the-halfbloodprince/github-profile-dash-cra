@@ -1,0 +1,23 @@
+.main {
+    display: flex;
+    height: 60vh;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: monospace;
+    /* background: #ffffff33; */
+    margin-top: 3rem;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.main h1 {
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 500px) {
+    .main {
+        flex-direction: column;
+    }
+}
