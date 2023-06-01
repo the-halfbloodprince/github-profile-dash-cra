@@ -59,16 +59,16 @@ The input field may confuse people as it doesn't have a search button, but to se
 [x] Pagination
 ![](./public/ss4.jpg)
 
-[ ] Dark Theme / Light Theme Toggle - was in the plan to be implemented but I'm skipping it for now, will add later after a bit of refactoring.
+[ ] Dark Theme / Light Theme Toggle - was in the plan to be implemented but I'm skipping it for now - have to come up with some design first on what to change
 
 ## Next Todos:
 [x] ~The Code can be significantly cleaned up and refactored, which will be my next step.~
 
 
-[ ] ~Error State handling better for different errors~
+[x] ~Error State handling better for different errors~
 
 
-[ ] ~Improve UI~
+[x] ~Improve UI~
 
 
 [ ] Dark and Light Theme
