@@ -55,6 +55,11 @@ export const useFetchUserData = (username: string, page: number, per_page: numbe
                 setUserLoading(false)
             })
 
+        return () => {
+            setUserData(null)
+            setRepos(null)
+        }
+
     }, [username])
 
     useEffect(() => {
