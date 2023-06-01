@@ -4,7 +4,7 @@ import { Skeleton } from '@mui/material'
 
 type Props = {}
 
-const UserDataLoading: FC<Props> = () => {
+const UserLoadingScreen: FC<Props> = () => {
 
   const animationType = "pulse"
 
@@ -30,4 +30,4 @@ const UserDataLoading: FC<Props> = () => {
   )
 }
 
-export default UserDataLoading
+export default UserLoadingScreen
