@@ -36,8 +36,11 @@ export const useFetchUserData = (username: string) => {
                     publicRepositoryCount: res.data.public_repos,
                 })
 
+                setUserDataError(0)
+
             }).catch(err => {
-                setUserDataError(err.response.status)
+                setUserData(null)
+                setUserDataError(err.response?.status)
             }).finally(() => {
                 setUserLoading(false)
             })

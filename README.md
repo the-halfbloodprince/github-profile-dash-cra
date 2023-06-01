@@ -53,7 +53,7 @@ The input field may confuse people as it doesn't have a search button, but to se
 ![](./public/ss2.jpg)
 
 [x] ~Error State handled - User as well as Repos~
-
+![](./public/error.jpg)
 
 [x] ~Pagination~
 ![](./public/ss4.jpg)
@@ -78,4 +78,4 @@ The input field may confuse people as it doesn't have a search button, but to se
 [x] ~More integration with Material UI~
 
 
-[x] Final cleanup and refactor
+[x] ~Final cleanup and refactor~

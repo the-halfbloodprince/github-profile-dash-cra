@@ -63,8 +63,10 @@ export const useFetchReposData = (username: string, page: number, per_page: numb
 
                 setRepos(finalRepos)
 
+                setReposError(null)
+
             }).catch((err) => {
-                setReposError(err.response.status)
+                setReposError(err.response?.status)
             }).finally(() => {
                 setReposLoading(false)
             })
