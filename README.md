@@ -49,10 +49,10 @@ The input field may confuse people as it doesn't have a search button, but to se
 [x] README prepared.
 
 ## (Bonus Tasks)
-[x] Loading State - User as well as Repos
+[x] Loading State handled - User as well as Repos
 ![](./public/ss2.jpg)
 
-[>] Error State is handled but the UI not well prepared - User as well as Repos
+[x] Error State handled - User as well as Repos
 ![](./public/ss3.jpg)
 
 
@@ -62,16 +62,13 @@ The input field may confuse people as it doesn't have a search button, but to se
 [ ] Dark Theme / Light Theme Toggle - was in the plan to be implemented but I'm skipping it for now, will add later after a bit of refactoring.
 
 ## Next Todos:
-[ ] The Code can be significantly cleaned up and refactored, which will be my next step.
+[x] ~The Code can be significantly cleaned up and refactored, which will be my next step.~
 
 
-[ ] Error State handling better for different errors
+[ ] ~Error State handling better for different errors~
 
 
-[ ] Error handling - Error Boundaries
-
-
-[ ] Improve UI
+[ ] ~Improve UI~
 
 
 [ ] Dark and Light Theme
