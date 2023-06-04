@@ -9,7 +9,7 @@ export const useMaterialTheme = (darkModeEnabled: boolean) => {
           main: '#865DFF',
         },
         secondary: {
-          main: '#E384FF',
+          main: '#ff0',
         },
         error: {
           main: "#f00",

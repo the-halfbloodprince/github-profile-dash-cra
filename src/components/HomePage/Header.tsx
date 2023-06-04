@@ -10,6 +10,7 @@ type Props = {
     themeToggler: () => void
     usernameInputRef: React.RefObject<HTMLInputElement>
     usernameSubmitHandlers: SubmitHandlers
+    isTyping: boolean
     // handleUsernameSubmit_onChange: React.ChangeEventHandler<HTMLInputElement>
     // handleUsernameSubmit_onKBDEnter: React.KeyboardEventHandler<HTMLInputElement>
 }
@@ -19,7 +20,8 @@ const Header: FC<Props> = ({
     darkModeEnabled, 
     themeToggler, 
     usernameInputRef,
-    usernameSubmitHandlers
+    usernameSubmitHandlers,
+    isTyping
 
 }) => {
 
@@ -45,25 +47,33 @@ const Header: FC<Props> = ({
                 <ArrowForwardIcon className={styles.arrow} />
             </Stack>
 
-            {/* input element */}
-            <TextField
-                inputRef={usernameInputRef}
-                onKeyDown={usernameSubmitHandlers.onKBDAction}
-                onChange={usernameSubmitHandlers.onChange}
-                autoFocus
-                inputProps={{
-                style: {
-                    fontSize: '2.5rem',
-                    outlineColor: 'transparent',
-                    border: `solid ${theme.palette.primary.main} 5px`,
-                }
-                }}
-                sx={{
-                outline: 'transparent',
-                border: 'none',
-                }}
-            />
+            <div className={styles.input_wrapper}>
+                {/* input element */}
+                <TextField
+                    inputRef={usernameInputRef}
+                    onKeyDown={usernameSubmitHandlers.onKBDAction}
+                    onChange={usernameSubmitHandlers.onChange}
+                    autoFocus
+                    inputProps={{
+                    style: {
+                        fontSize: '2.5rem',
+                        outlineColor: 'transparent',
+                        border: `solid ${theme.palette.primary.main} 5px`,
+                    }
+                    }}
+                    sx={{
+                    outline: 'transparent',
+                    border: 'none',
+                    }}
+                />
+                <div className={`${styles.typing__indicator} ${isTyping ? styles.typing : ""}`}>
+                    <div className={styles.load}></div>
+                    <div className={styles.load}></div>
+                    <div className={styles.load}></div>
+                </div>
             </div>
+        </div>
+
     )
 }
 

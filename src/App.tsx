@@ -61,7 +61,7 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
     setCurrentPage(1)
   }, [username])
 
-  useDebouncedValue({ 
+  const isTyping = useDebouncedValue({ 
     nonDebouncedValue: usernameVal, 
     setDebouncedValue: setUsername
   })
@@ -102,6 +102,7 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
           usernameSubmitHandlers={usernameSubmitHandlers}
           themeToggler={themeToggler}
           usernameInputRef={usernameInputRef}
+          isTyping={isTyping}
       />
 
       {/* User Section */}

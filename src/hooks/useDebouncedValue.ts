@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface Params<T> {
     nonDebouncedValue: T;
@@ -12,18 +12,27 @@ export const useDebouncedValue = ({
 
  }: Params<string>) => {
 
+    const [isTyping, setIsTyping] = useState<boolean>(false)
+
     useEffect(() => {
+
+        
+        setIsTyping(true)
 
         const duration = 500
     
         const timer = setTimeout(() => {
-          setUsername(usernameVal)
+            setIsTyping(false)
+            setUsername(usernameVal)
         }, duration)
     
         return () => {
-          clearTimeout(timer)
+            // setIsTyping(false)
+            clearTimeout(timer)
         }
     
     }, [usernameVal])
+
+    return isTyping
 
 }
