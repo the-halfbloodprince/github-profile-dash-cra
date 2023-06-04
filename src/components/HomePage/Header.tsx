@@ -3,12 +3,15 @@ import styles from './Header.module.css'
 import { Stack, Typography, TextField, useTheme } from '@mui/material'
 import ThemeIcon from '../ThemeIcon'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { SubmitHandlers } from '../../models/Component_DTOs';
 
 type Props = {
     darkModeEnabled: boolean
     themeToggler: () => void
     usernameInputRef: React.RefObject<HTMLInputElement>
-    handleUsernameSubmit: React.KeyboardEventHandler<HTMLDivElement>
+    usernameSubmitHandlers: SubmitHandlers
+    // handleUsernameSubmit_onChange: React.ChangeEventHandler<HTMLInputElement>
+    // handleUsernameSubmit_onKBDEnter: React.KeyboardEventHandler<HTMLInputElement>
 }
 
 const Header: FC<Props> = ({ 
@@ -16,7 +19,7 @@ const Header: FC<Props> = ({
     darkModeEnabled, 
     themeToggler, 
     usernameInputRef,
-    handleUsernameSubmit
+    usernameSubmitHandlers
 
 }) => {
 
@@ -45,7 +48,8 @@ const Header: FC<Props> = ({
             {/* input element */}
             <TextField
                 inputRef={usernameInputRef}
-                onKeyDown={handleUsernameSubmit}
+                onKeyDown={usernameSubmitHandlers.onKBDAction}
+                onChange={usernameSubmitHandlers.onChange}
                 autoFocus
                 inputProps={{
                 style: {

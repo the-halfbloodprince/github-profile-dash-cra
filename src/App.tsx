@@ -14,6 +14,8 @@ import NoUser from './components/HomePage/NoUser';
 import Header from './components/HomePage/Header';
 import Main from './components/HomePage/AppLayout'
 import ItemsPerPageSelect from './components/HomePage/ItemsPerPageSelect';
+import { useDebouncedValue } from './hooks/useDebouncedValue';
+import { SubmitHandlers } from './models/Component_DTOs';
 
 // ! using prop drilling for the initial one or two layers
 // ! to facilitate some things which do not require app wide consumption
@@ -36,6 +38,7 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
   const usernameInputRef = useRef<HTMLInputElement>(null)
   
   // states
+  const [usernameVal, setUsernameVal] = useState<string>("")
   const [username, setUsername] = useState<string>("")
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [itemsPerPage, setItemsPerPage] = useState<number>(12)
@@ -58,12 +61,27 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
     setCurrentPage(1)
   }, [username])
 
+  useDebouncedValue({ 
+    nonDebouncedValue: usernameVal, 
+    setDebouncedValue: setUsername
+  })
+
   // event handlers
-  const handleUsernameSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+
+  const usernameSubmitHandlers: SubmitHandlers = {}
+
+  usernameSubmitHandlers.onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()
-      setUsername(usernameInputRef.current!.value)
-    }
+      // console.log(e.target.value)
+      const val = e.target.value.trim()
+      setUsernameVal(val)
+  }
+
+  usernameSubmitHandlers.onKBDAction = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        e.preventDefault()
+        setUsernameVal(usernameInputRef.current!.value.trim())
+      }
   }
 
   const handlePageChange = (e: ChangeEvent<unknown>, newPage: number) => {
@@ -81,7 +99,7 @@ const App: FC<AppProps> = ({ darkModeEnabled, themeToggler }) => {
       {/* Header */}
       <Header
           darkModeEnabled={darkModeEnabled}
-          handleUsernameSubmit={handleUsernameSubmit}
+          usernameSubmitHandlers={usernameSubmitHandlers}
           themeToggler={themeToggler}
           usernameInputRef={usernameInputRef}
       />

@@ -4,6 +4,9 @@ import './index.css';
 import ThemedApp from './ThemedApp';
 import axios from 'axios';
 
+// select name from table1;
+// id, name, 
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
